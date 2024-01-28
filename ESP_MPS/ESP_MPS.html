@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+<link href="assets/images/favicon.png" rel="icon" />
+<title>ESP MPS</title>
+<meta name="description" content="Your ThemeForest item Name and description">
+<meta name="author" content="harnishdesign.net">
+
+<!-- Stylesheet
+============================== -->
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css" />
+<!-- Font Awesome Icon -->
+<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css" />
+<!-- Magnific Popup -->
+<link rel="stylesheet" type="text/css" href="assets/vendor/magnific-popup/magnific-popup.min.css" />
+<!-- Highlight Syntax -->
+<link rel="stylesheet" type="text/css" href="assets/vendor/highlight.js/styles/github.css" />
+<!-- Custom Stylesheet -->
+<link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css" />
+
+<style>
+  body{
+    color: white;
+  }
+  .lang {
+    color: white;
+  }
+  .lang:hover {
+    cursor: pointer;
+    color: #0366d6;
+  }
+</style>
+</head>
+
+<body data-spy="scroll" data-target=".idocs-navigation" data-offset="125">
+
+<div id="main-wrapper"> 
+  <div><button class="showButton locale-main-menu1">меню</button></div>
+  
+  <div id="content" role="main">
+    
+	  <!-- Sidebar Navigation -->		
+	  <div class="idocs-navigation bg-dark docs-navigation-dark">  
+
+      <ul class="nav flex-column ">
+        <li style="color: white; position: relative; padding: 1px 30px; line-height: 25px; font-size: 120%;"><span class="lang" onclick='changeLocaleService.loadLocale("ru")'>РУ</span> | <span class="lang" onclick='changeLocaleService.loadLocale("en")'>EN</span></li>
+        <li class="nav-item"><a class="nav-link active locale-main-menu2" href="#start">Beginning of work</a>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link locale-main-menu3" href="#installation">Installation</a></li>
+            <li class="nav-item"><a class="nav-link locale-main-menu4" href="#Dependencies">Dependencies</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link locale-main-menu5" href="#Usage">Usage</a>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link locale-main-menu6" href="#Description">Description of structures</a></li>
+            <li class="nav-item"><a class="nav-link locale-main-menu7" href="#Examples">Examples of using</a></li>
+          </ul>
+        </li>
+        <!-- 
+        <li class="nav-item"><a class="nav-link locale-main-menu8" href="#Principle">Принцип работы</a>
+		    </li>   
+        -->   
+      </ul> 
+    </div>
+    
+    <!-- Content -->
+    <div class="idocs-content">
+      <div class="container"> 
+        
+        <section id="start">
+          <h2 class="locale-main-h1">ESP MPS - ESP8266 Motion and Presence Sensor</h1>
+          <h4 class="locale-main-h2">A simple library that will turn your ESP8266 into a full value motion sensor and/or presence sensor without other periphery.</h2>
+          
+          <div class="row">
+            <div class="col-sm-6 col-lg-4">
+              <ul class="list-unstyled" style="font-size: 110%;">
+                <li><strong class="font-weight-700 locale-main-created">Created:</strong> <span class="locale-main-date">06.12.2023</span></li>
+                <li><strong class="locale-main-author">Author:</strong> <a href="https://vk.com/diemonic" target="_blank" class="locale-main-name">Dmitry Kashuba</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="locale-main-h3">A library written on C++, which will allow you to use your ESP8266 or ESP32 as a motion or presence sensor without connecting any additional devices to it.</p>
+
+          <hr class="divider">
+
+          <section id="installation">
+            <h3 class="locale-main-menu3">Installation</h3>
+            <p class="locale-main-install">To get started, download the ESP_MPS.h library file and place it among other project files.</p>
+            <p><a class="nav-link" href="https://github.com/diemonic1/ESP_MPS" target="_blank">GitHub</a></p>
+            <div class="alert alert-warning mb-4"><span class="badge badge-danger text-uppercase locale-main-att">ATTENTION:</span> <span class="locale-main-att1">Please note that the installation of standard libraries is required to work ESP_MPS.h. Study the next section before proceeding with use.</span></div>
+          </section>
+
+          <hr class="divider">
+
+          <section id="Dependencies">
+            <h3 class="locale-main-menu4">Dependencies</h3>
+            <p class="locale-main-dep1">The ESP_MPS.H library requires 3 standard libraries for it's work:</p>
+            <ol>
+              <li><code>ESP8266WiFi.h</code> - <a class="locale-main-download" href="https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html">documentation</a></li>
+              <li><code>ESP8266mDNS.h</code> - <a class="locale-main-download" href="https://www.arduino.cc/reference/en/libraries/esp8266_mdns/">documentation</a></li>
+              <li><code>WiFiUdp.h</code> – <a class="locale-main-download" href="https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/udp-examples.html">documentation</a></li>
+            </ol>
+            <p class="locale-main-dep2">You need to have these libraries in your project. Take advantage of the standard mesher of the libraries to install them. If you use Platformio in VS Code or Arduino IDE, these libraries should have been installed along with the ESP core (which is non -firmly for firming the device).</p>
+          </section>
+              
+        </section>
+        
+        <hr class="divider">
+
+        <section id="Usage">
+          <h2 class="locale-main-menu5">Usage</h2>
+          
+          <section id="Description">
+            <h3 class="locale-main-menu6">Description of structures</h3>
+            <h5>MPS_StartWiFiConnection()</h5>
+            <pre><code class="cpp">bool MPS_StartWiFiConnection(const char* SSID, const char* password)</code></pre>
+            <p class="locale-main-use1">Используется для подключения к существующей сети WiFi. При успешном подключении возвращает true. В качестве параметров передаются строки, содержащие имя сети и пароль соответственно.</p>
+
+            <hr class="divider">
+
+            <h5>MPS_Setup()</h5>
+            <pre><code class="cpp">void MPS_Setup(int measuredPower)</code></pre>
+            <p class="locale-main-use2">Используется для задания параметров сенсора. В качестве параметра передаются уровень сигнала RSSI (смотрите MPS_RSSI()), когда устройство находится на расстоянии ровно одного метра от источника WiFi. Это необходимо для определения расстояния до источника. Если вам не нужно определять расстояние, не передавайте параметр.</p>
+            <div class="alert alert-warning mb-4"><span class="badge badge-danger text-uppercase locale-main-att">ВНИМАНИЕ:</span> <span class="locale-main-att2">Параметр MeasuredPower нужно передавать с минусом!</span></div>
+
+            <hr class="divider">
+
+            <h5>MPS_RSSI()</h5>
+            <pre><code class="cpp">int MPS_RSSI()</code></pre>
+            <p class="locale-main-use3">Возвращает текущее значение ослабления сигнала. Чем дальше источник WiFi, тем меньше значение. Значения находятся в отрицательном диапозоне.</p>
+
+            <hr class="divider">
+
+            <h5>MPS_GetDistance()</h5>
+            <pre><code class="cpp">float MPS_GetDistance()</code></pre>
+            <p class="locale-main-use4">Возвращает текущее расстояние до источника WiFi </p>
+
+            <hr class="divider">
+
+            <h5>MPS_MotionSensorLevel()</h5>
+            <pre><code class="cpp">int MPS_MotionSensorLevel()</code></pre>
+            <p class="locale-main-use5"></p> 
+            <a class="popup-img" href="images/sc1.png">
+              <img src="images/sc1.png" class="img-fluid img-thumbnail">
+            </a>
+
+            <hr class="divider">
+
+            <h5>MPS_PresenceSensorLevel()</h5>
+            <pre><code class="cpp">int MPS_PresenceSensorLevel()</code></pre>
+            <p class="locale-main-use6"></p>
+            <a class="popup-img" href="images/sc2.png">
+              <img src="images/sc2.png" class="img-fluid img-thumbnail">
+            </a>
+            
+            <hr class="divider">
+
+            <h5>MPS_RADAR_UNINITIALIZED</h5>
+            <pre><code class="cpp">int MPS_RADAR_UNINITIALIZED</code></pre>
+            <p class="locale-main-use7"></p>
+            
+            <hr class="divider">
+
+            <h5>MPS_RADAR_RSSI_TOO_LOW</h5>
+            <pre><code class="cpp">int MPS_RADAR_RSSI_TOO_LOW</code></pre>
+            <p class="locale-main-use8"></p>
+            
+            <hr class="divider">
+
+            <h5>MPS_MINIMUM_RSSI</h5>
+            <pre><code class="cpp">int MPS_MINIMUM_RSSI</code></pre>
+            <p class="locale-main-use9"></p>
+            
+            <hr class="divider">
+
+            <h5>MPS_CONNECTION_LOST</h5>
+            <pre><code class="cpp">int MPS_CONNECTION_LOST</code></pre>
+            <p class="locale-main-use10"></p>
+            
+          <hr class="divider">
+        </section>
+
+          <section id="Examples">
+            <h3 class="locale-main-menu7">Примеры использования</h3>
+  
+<h5 class="locale-main-ex1">Подключение библиотеки и ее запуск</h5>            
+<pre><code class="cpp">#include &lt;ESP_MPS.h&gt;
+
+void setup() {
+  Serial.begin(115200);
+  Serial.println("Booting...");
+
+  if (MPS_StartWiFiConnection(SSID, password))
+  {
+    Serial.println("Wi-Fi connected!");
+  }
+
+  MPS_Setup(-64);
+}</code></pre>
+<div class="alert alert-warning mb-4"><span class="badge badge-danger text-uppercase locale-main-att">ATTENTION:</span> <span class="locale-main-att3"></span></div>
+
+<h5 class="locale-main-ex2">Вывод дистанции</h5>    
+
+<pre><code class="cpp">void loop() {
+  float distance = MPS_GetDistance();
+  Serial.print("distance: ");
+  Serial.println(distance);
+}</code></pre>
+
+<h5 class="locale-main-ex3">Вывод данных с датчиков</h5>    
+
+<pre><code class="cpp">void loop() {
+  int MotionSensorLevel = MPS_MotionSensorLevel();
+  int PresenceSensorLevel = MPS_PresenceSensorLevel();
+
+  if (MotionSensorLevel == MPS_RADAR_UNINITIALIZED) 
+  {
+    Serial.println("The radar is not initialized. You must initialize it before use.");
+  }
+  else if (MotionSensorLevel == MPS_RADAR_RSSI_TOO_LOW)
+  {
+    Serial.print("Wi-Fi signal too low. Minimum RSSI limit is: ");
+    Serial.println(MPS_MINIMUM_RSSI);
+  }
+  else if (MotionSensorLevel == MPS_CONNECTION_LOST)
+  {
+    Serial.println("Wi-Fi signal is 0. Perhaps the connection is lost.");
+  }
+  else if (MotionSensorLevel &lt; 0)
+  {
+    Serial.print("Wait for the filling of the buffer. Remains to wait: ");
+    Serial.println(MotionSensorLevel);
+  }
+  else
+  {
+    Serial.print("Motion Sensor Level: ");
+    Serial.println(MotionSensorLevel);
+    Serial.print("Presence Sensor Level: ");
+    Serial.println(PresenceSensorLevel);
+  }
+}</code></pre>
+
+<h5 class="locale-main-ex4">Вывод ослабления сигнала</h5>    
+
+<pre><code class="cpp">void loop() {
+  Serial.print("RSSI:"); 
+  Serial.println(MPS_RSSI());
+}</code></pre>
+
+<h5 class="locale-main-ex5">Вывод информации о том, что датчик засек даижение</h5>    
+
+<pre><code class="cpp">void loop() {
+  if (MotionSensorLevel &gt; 60)
+  {
+    Serial.println("!!! ALARM !!!"); 
+  }
+}</code></pre>
+
+
+          </section>
+
+        </section>
+<!-- 
+		    <hr class="divider">
+
+        <section id="Principle">
+          <h2 class="locale-main-menu8">Принцип работы</h2>
+
+        </section>
+		
+		    <hr class="divider">
+--> 
+      </div>
+    </div>
+	
+  </div>
+  <!-- Content end --> 
+  
+  <!-- Footer
+  ============================ -->
+  <footer id="footer" class="section bg-dark footer-text-light">
+    <div class="container">
+      <ul class="social-icons social-icons-lg social-icons-muted justify-content-center mb-3">
+        <li><a data-toggle="tooltip" href="https://github.com/diemonic1/ESP_MPS" target="_blank" title="" data-original-title="GitHub"><i class="fab fa-github"></i></a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- Footer end -->
+  
+</div>
+<!-- Document Wrapper end --> 
+
+<!-- Back To Top --> 
+<a id="back-to-top" data-toggle="tooltip" title="Back to Top" href="javascript:void(0)"><i class="fa fa-chevron-up"></i></a> 
+
+<!-- JavaScript
+============================ -->
+<script src="assets/vendor/jquery/jquery.min.js"></script> 
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
+<!-- Highlight JS -->
+<script src="assets/vendor/highlight.js/highlight.min.js"></script> 
+<!-- Easing --> 
+<script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script> 
+<!-- Magnific Popup --> 
+<script src="assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script> 
+<!-- Custom Script -->
+<script src="assets/js/theme.js"></script>
+<script>
+document.querySelector('.showButton').addEventListener('click', function(){
+document.querySelector('.idocs-navigation').classList.toggle('active');
+this.classList.toggle('active');
+})
+</script>
+
+<script src="./locale.js"></script>
+<script> changeLocaleService.loadLocale("en"); </script>
+
+</body>
+</html>
