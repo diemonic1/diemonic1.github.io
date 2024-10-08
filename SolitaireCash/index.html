@@ -48,7 +48,7 @@
         console.log("tournament id from url: " + tournamentId);
 
         myGameInstance = unityInstance;
-        myGameInstance.SendMessage('GamePresenter', 'RECEIVE_MESSAGE_FROM_JS', profileId, tournamentId);
+        myGameInstance.SendMessage('GamePresenter', 'RECEIVE_MESSAGE_FROM_JS', str(profileId), str(tournamentId));
       });;
     </script>
   </body>
