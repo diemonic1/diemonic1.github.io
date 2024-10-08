@@ -30,7 +30,31 @@
 </head>
 <body>
     <div class="outer">
-        <iframe frameborder="0" src="https://itch.io/embed-upload/11564212?color=333333" ></iframe>
+        <iframe frameborder="0" src="https://itch.io/embed-upload/11677599?color=333333" ></iframe>
     </div>
+    <script>
+        function OnUnityReady(){
+            console.log("### application is loaded");
+        }
+
+        const urlParams = new URLSearchParams(window.location.search)
+        const profileId = urlParams.get('profile_id')
+        const tournamentId = urlParams.get('tournament_id')
+        console.log("profile id from url: " + profileId);
+        console.log("tournament id from url: " + tournamentId);
+
+        var myGameInstance = null;
+        window.onload = () => 
+        {
+            unityInstance.SendMessage('GamePresenter', 'RECEIVE_MESSAGE_FROM_JS', 'MyString');
+            /*
+            createUnityInstance(canvas, config, (progress) => {console.log("1")}).then((unityInstance) => 
+            {
+                myGameInstance = unityInstance;
+                MyGameInstance.SendMessage('GamePresenter', 'RECEIVE_MESSAGE_FROM_JS', 'MyString');
+            })
+                */
+        }
+    </script>
 </body>
 </html>
