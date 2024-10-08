@@ -6,9 +6,7 @@
     <title>Solitaire Cash</title>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0; background-color: #282828;">
-    <div id="handler">
-      <canvas id="unity-canvas" tabindex="-1" style="background: #dd0b40"></canvas>
-    </div>
+    <canvas id="unity-canvas" tabindex="-1" style="background: #282828"></canvas>
     <script src="Build/SolitaireCash.loader.js"></script>
     <script>
       var canvas = document.querySelector("#unity-canvas");
@@ -21,22 +19,11 @@
 
         canvas.style.width = "100%";
         canvas.style.height = "100%";
+        canvas.style.top = "0%";
+        canvas.style.left = "0%";
 
         document.body.style.textAlign = "left";
       }
-      else{
-        var handler = document.querySelector("#handler");
-        handler.style.position = "absolute";
-        handler.style.width = "700";
-        handler.style.height = "1600";
-
-        canvas.style.width = "100%";
-        canvas.style.height = "100vh"
-      }
-
-      canvas.style.top = "0%";
-      canvas.style.left = "0%";
-      canvas.style.position = "absolute";
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
         dataUrl: "Build/SolitaireCash.data",
