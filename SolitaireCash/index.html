@@ -48,9 +48,9 @@
         console.log("profile id from url: " + profileId.toString());
         console.log("tournament id from url: " + tournamentId.toString());
 
-        myGameInstance.SendMessage('GamePresenter', 'JS_SetProfileId', profileId.toString());
-        myGameInstance.SendMessage('GamePresenter', 'JS_SetTournamentId', tournamentId.toString());
-        myGameInstance.SendMessage('GamePresenter', 'JS_StartGame');
+        unityInstance.SendMessage('GamePresenter', 'JS_SetProfileId', profileId.toString());
+        unityInstance.SendMessage('GamePresenter', 'JS_SetTournamentId', tournamentId.toString());
+        unityInstance.SendMessage('GamePresenter', 'JS_StartGame');
       });
     </script>
   </body>
