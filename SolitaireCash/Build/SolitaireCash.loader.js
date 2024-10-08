@@ -1,5 +1,5 @@
 function createUnityInstance(canvas, config, onProgress) {
-  onProgress = onProgress || function () { };
+  onProgress = onProgress || function () {};
 
 
   function showBanner(msg, type) {
@@ -210,6 +210,7 @@ function createUnityInstance(canvas, config, onProgress) {
       };
     },
   };
+
 
   Module.SystemInfo = (function () {
 
