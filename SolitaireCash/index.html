@@ -42,11 +42,11 @@
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       }).then((unityInstance) => {
-        const urlParams = new URLSearchParams(window.location.search)
-        const profileId = urlParams.get('profile_id')
-        const tournamentId = urlParams.get('tournament_id')
-        console.log("profile id from url: " + profileId);
-        console.log("tournament id from url: " + tournamentId);
+        const urlParams = new URLSearchParams(window.location.search);
+        var profileId = urlParams.get('profile_id');
+        var tournamentId = urlParams.get('tournament_id');
+        console.log("profile id from url: " + profileId.toString());
+        console.log("tournament id from url: " + tournamentId.toString());
 
         myGameInstance = unityInstance;
         myGameInstance.SendMessage('GamePresenter', 'RECEIVE_MESSAGE_FROM_JS', profileId.toString(), tournamentId.toString());
