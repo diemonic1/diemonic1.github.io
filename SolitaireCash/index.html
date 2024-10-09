@@ -38,10 +38,15 @@
         var width = window.innerWidth;
         var c = height / width;
 
-        if (c > 1.75)
+        if (c > 1.75 && c < 2.3)
         {
           canvas.style.height = "100%";
           canvas.style.width = "100%";
+        }
+        else if (c >= 2.3)
+        {
+          canvas.style.width = width + "px";
+          canvas.style.height = width * 16 / 7 + "px";
         }
         else
         {
