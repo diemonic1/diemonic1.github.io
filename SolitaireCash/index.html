@@ -63,7 +63,6 @@
         streamingAssetsUrl: "StreamingAssets",
         companyName: "diemonic",
         productName: "Solitaire",
-        productVersion: "0.1",
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       }).then((unityInstance) => {
@@ -78,6 +77,12 @@
         unityInstance.SendMessage('GamePresenter', 'JS_SetProfileId', profileId.toString());
         unityInstance.SendMessage('GamePresenter', 'JS_SetTournamentId', tournamentId.toString());
         unityInstance.SendMessage('GamePresenter', 'JS_SetTournamentType', tournamentType.toString());
+
+        document.addEventListener("visibilitychange", function(){
+            if (document.hidden){
+              unityInstance.SendMessage('GamePresenter', 'JS_SetPause');
+            }
+        });
       });
     </script>
   </body>
