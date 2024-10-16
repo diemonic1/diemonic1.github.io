@@ -67,9 +67,21 @@
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       }).then((unityInstance) => {
         const urlParams = new URLSearchParams(window.location.search);
-        var profileId = urlParams.get('profile_id');
-        var tournamentId = urlParams.get('tournament_id');
-        var tournamentType = urlParams.get('tournament_type');
+        var profileId = "";
+        var tournamentId = "";
+        var tournamentType = "";
+
+        try {
+          profileId = urlParams.get('profile_id');
+          tournamentId = urlParams.get('tournament_id');
+          tournamentType = urlParams.get('tournament_type');
+        }
+        catch (err){
+          profileId = "error";
+          tournamentId = "error";
+          tournamentType = "error";
+        }
+        
         console.log("profile id from url: " + profileId.toString());
         console.log("tournament id from url: " + tournamentId.toString());
         console.log("tournament type from url: " + tournamentType.toString());
