@@ -100,6 +100,7 @@
         unityInstance.SendMessage('GamePresenter', 'JS_SetTournamentType', tournamentType.toString());
 
         if (tutorial){
+          console.log("Tutorial");
           unityInstance.SendMessage('GamePresenter', 'JS_ShowTutorial');
         }
 
