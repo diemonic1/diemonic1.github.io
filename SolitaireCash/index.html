@@ -77,6 +77,11 @@
           tutorial = true;
         }
 
+        if (tutorial) {
+          console.log("Tutorial");
+          unityInstance.SendMessage('GamePresenter', 'JS_ShowTutorial');
+        }
+
         profileId = urlParams.get('profile_id');
         tournamentId = urlParams.get('tournament_id');
         tournamentType = urlParams.get('tournament_type');
@@ -101,11 +106,6 @@
         unityInstance.SendMessage('GamePresenter', 'JS_SetProfileId', profileId.toString());
         unityInstance.SendMessage('GamePresenter', 'JS_SetTournamentId', tournamentId.toString());
         unityInstance.SendMessage('GamePresenter', 'JS_SetTournamentType', tournamentType.toString());
-
-        if (tutorial) {
-          console.log("Tutorial");
-          unityInstance.SendMessage('GamePresenter', 'JS_ShowTutorial');
-        }
 
         document.addEventListener("visibilitychange", function(){
             if (document.hidden){
