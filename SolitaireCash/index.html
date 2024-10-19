@@ -72,26 +72,26 @@
         var tournamentType = "";
         var tutorial = false;
 
-        try {
-          var tutorialParam = urlParams.get('tutorial');
+        tutorialParam = urlParams.get('tutorial');
+        if (tutorialParam != null){
           tutorial = true;
         }
-        catch (err){
-          tutorial = false;
+
+        profileId = urlParams.get('profile_id');
+        tournamentId = urlParams.get('tournament_id');
+        tournamentType = urlParams.get('tournament_type');
+        
+        if (profileId == null) {
+          tournamentId = "null";
+        }
+        if (tournamentId == null) {
+          tournamentId = "null";
+        }
+        if (tournamentType == null) {
+          tournamentType = "null";
         }
 
-        try {
-          profileId = urlParams.get('profile_id');
-          tournamentId = urlParams.get('tournament_id');
-          tournamentType = urlParams.get('tournament_type');
-        }
-        catch (err){
-          profileId = "error";
-          tournamentId = "error";
-          tournamentType = "error";
-        }
-        
-        console.log("profile id from url: " + profileId);
+        console.log("profile id from url: " + profileId.toString());
         console.log("tournament id from url: " + tournamentId.toString());
         console.log("tournament type from url: " + tournamentType.toString());
 
@@ -99,7 +99,7 @@
         unityInstance.SendMessage('GamePresenter', 'JS_SetTournamentId', tournamentId.toString());
         unityInstance.SendMessage('GamePresenter', 'JS_SetTournamentType', tournamentType.toString());
 
-        if (tutorial){
+        if (tutorial) {
           console.log("Tutorial");
           unityInstance.SendMessage('GamePresenter', 'JS_ShowTutorial');
         }
