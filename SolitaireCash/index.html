@@ -68,7 +68,6 @@
       }).then((unityInstance) => {
         const urlParams = new URLSearchParams(window.location.search);
         var profileId = "";
-        var tournamentId = "";
         var tournamentType = "";
         var tutorial = false;
 
@@ -83,16 +82,11 @@
         }
 
         profileId = urlParams.get('profile_id');
-        tournamentId = urlParams.get('tournament_id');
         tournamentType = urlParams.get('tournament_type');
         
         if (profileId == null) {
           profileId = "null";
           console.log("profileId null");
-        }
-        if (tournamentId == null) {
-          tournamentId = "null";
-          console.log("tournamentId null");
         }
         if (tournamentType == null) {
           tournamentType = "null";
@@ -100,11 +94,9 @@
         }
 
         console.log("profile id from url: " + profileId.toString());
-        console.log("tournament id from url: " + tournamentId.toString());
         console.log("tournament type from url: " + tournamentType.toString());
 
         unityInstance.SendMessage('GamePresenter', 'JS_SetProfileId', profileId.toString());
-        unityInstance.SendMessage('GamePresenter', 'JS_SetTournamentId', tournamentId.toString());
         unityInstance.SendMessage('GamePresenter', 'JS_SetTournamentType', tournamentType.toString());
 
         document.addEventListener("visibilitychange", function(){
