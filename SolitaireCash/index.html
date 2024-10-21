@@ -76,6 +76,10 @@
           tutorial = true;
         }
 
+        console.log("---------------------------------");
+        console.log("---------------------------------");
+        console.log("---------------------------------");
+
         if (tutorial) {
           console.log("Tutorial");
           unityInstance.SendMessage('GamePresenter', 'JS_ShowTutorial');
@@ -95,6 +99,10 @@
 
         console.log("profile id from url: " + profileId.toString());
         console.log("tournament type from url: " + tournamentType.toString());
+        
+        console.log("---------------------------------");
+        console.log("---------------------------------");
+        console.log("---------------------------------");
 
         unityInstance.SendMessage('GamePresenter', 'JS_SetProfileId', profileId.toString());
         unityInstance.SendMessage('GamePresenter', 'JS_SetTournamentType', tournamentType.toString());
