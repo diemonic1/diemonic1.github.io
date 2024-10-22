@@ -70,10 +70,17 @@
         var profileId = "";
         var tournamentType = "";
         var tutorial = false;
+        var name = "You";
 
-        tutorialParam = urlParams.get('tutorial');
+        var tutorialParam = urlParams.get('tutorial');
         if (tutorialParam != null){
           tutorial = true;
+        }
+        if (tutorial){
+          var nameParam = urlParams.get('name');
+          if (nameParam != null){
+            name = nameParam;
+          }
         }
 
         console.log("---------------------------------");
@@ -83,6 +90,7 @@
         if (tutorial) {
           console.log("Tutorial");
           unityInstance.SendMessage('GamePresenter', 'JS_ShowTutorial');
+          unityInstance.SendMessage('GamePresenter', 'JS_SetPlayerName', name.toString());
         }
 
         profileId = urlParams.get('profile_id');
