@@ -29,7 +29,7 @@
   </head>
   <body>
     <canvas id="unity-canvas" tabindex="-1" class="UnCanvas"></canvas>
-    <script src="Build/SolitaireCash.loader.js"></script>
+    <script src="Build/SolitaireBet.loader.js"></script>
     <script>
       var canvas = document.querySelector("#unity-canvas");
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -69,12 +69,12 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/SolitaireCash.data",
-        frameworkUrl: "Build/SolitaireCash.framework.js",
-        codeUrl: "Build/SolitaireCash.wasm",
+        dataUrl: "Build/SolitaireBet.data",
+        frameworkUrl: "Build/SolitaireBet.framework.js",
+        codeUrl: "Build/SolitaireBet.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "diemonic",
-        productName: "Solitaire",
+        productName: "SolitaireBet",
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       }).then((unityInstance) => {
