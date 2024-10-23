@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Solitaire Bet | DEV</title>
+    <link href="favicon.png" rel="icon" />
+    <style>
+      body { 
+        background-color: #014C28;
+        background-image: url("background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .UnCanvas {
+        background-image: url("background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute; 
+        left: 50%; 
+        top: 50%; 
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="unity-canvas" tabindex="-1" class="UnCanvas"></canvas>
+    <script src="Build/SolitaireBet.loader.js"></script>
+    <script>
+      var canvas = document.querySelector("#unity-canvas");
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+      }
+      var meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+      document.getElementsByTagName('head')[0].appendChild(meta);
+
+      resize();
+
+      window.addEventListener('resize', function(event) {
+        resize();
+      }, true);
+
+      function resize(){
+        var height = window.innerHeight;
+        var width = window.innerWidth;
+        var c = height / width;
+
+        if (c > 1.73 && c < 2.3)
+        {
+          canvas.style.height = "100%";
+          canvas.style.width = "100%";
+        }
+        else if (c >= 2.3)
+        {
+          canvas.style.width = width + "px";
+          canvas.style.height = width * 16 / 7 + "px";
+        }
+        else
+        {
+          canvas.style.height = height + "px";
+          canvas.style.width = height * 7 / 16 + "px";
+        }
+      }
+
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/SolitaireBet.data",
+        frameworkUrl: "Build/SolitaireBet.framework.js",
+        codeUrl: "Build/SolitaireBet.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "diemonic",
+        productName: "SolitaireBet",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      }).then((unityInstance) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        var profileId = "";
+        var tournamentType = "";
+        var tutorial = false;
+        var name = "You";
+
+        var tutorialParam = urlParams.get('tutorial');
+        if (tutorialParam != null){
+          tutorial = true;
+        }
+        if (tutorial){
+          var nameParam = urlParams.get('name');
+          if (nameParam != null){
+            name = nameParam;
+          }
+        }
+
+        console.log("---------------------------------");
+        console.log("---------------------------------");
+        console.log("---------------------------------");
+
+        if (tutorial) {
+          console.log("Tutorial");
+          unityInstance.SendMessage('GamePresenter', 'JS_ShowTutorial');
+          unityInstance.SendMessage('GamePresenter', 'JS_SetPlayerName', name.toString());
+        }
+
+        profileId = urlParams.get('profile_id');
+        tournamentType = urlParams.get('tournament_type');
+        
+        if (profileId == null) {
+          profileId = "null";
+          console.log("profileId null");
+        }
+        if (tournamentType == null) {
+          tournamentType = "null";
+          console.log("tournamentType null");
+        }
+
+        console.log("profile id from url: " + profileId.toString());
+        console.log("tournament type from url: " + tournamentType.toString());
+        
+        console.log("---------------------------------");
+        console.log("---------------------------------");
+        console.log("---------------------------------");
+
+        unityInstance.SendMessage('GamePresenter', 'JS_SetProfileId', profileId.toString());
+        unityInstance.SendMessage('GamePresenter', 'JS_SetTournamentType', tournamentType.toString());
+
+        document.addEventListener("visibilitychange", function(){
+            if (document.hidden){
+              unityInstance.SendMessage('GamePresenter', 'JS_SetPause');
+            }
+        });
+      });
+    </script>
+  </body>
+</html>
