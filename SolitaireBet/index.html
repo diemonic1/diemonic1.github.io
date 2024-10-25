@@ -28,7 +28,6 @@
     </style>
   </head>
   <body>
-    <div class="Loading" id="Loading"></div>
     <canvas id="unity-canvas" tabindex="-1" class="UnCanvas"></canvas>
     <script src="Build/SolitaireBet.loader.js"></script>
     <script>
@@ -79,7 +78,7 @@
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       }).then((unityInstance) => {
-        document.getElementById("Loading").style.display = "none";
+        document.getElementById("unity-canvas").style.background = "";
         const urlParams = new URLSearchParams(window.location.search);
         var profileId = "";
         var tournamentType = "";
