@@ -25,9 +25,24 @@
         top: 50%; 
         transform: translate(-50%, -50%);
       }
+      .Loading{
+        position: absolute;
+        width: 230px;
+        height: 70px;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        z-index: 10000;
+        text-align: center;
+        font-size: 40px;
+        color: white;
+        font-family: cursive;
+        display: block;
+      }
     </style>
   </head>
   <body>
+    <div class="Loading" id="Loading">Loading...</div>
     <canvas id="unity-canvas" tabindex="-1" class="UnCanvas"></canvas>
     <script src="Build/SolitaireBet.loader.js"></script>
     <script>
@@ -78,6 +93,7 @@
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       }).then((unityInstance) => {
+        document.getElementById("Loading").style.display = "none";
         const urlParams = new URLSearchParams(window.location.search);
         var profileId = "";
         var tournamentType = "";
