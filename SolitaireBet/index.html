@@ -25,9 +25,18 @@
         top: 50%; 
         transform: translate(-50%, -50%);
       }
+      .Loading {
+        z-index: 1000;
+        display: block;
+        position: absolute;
+        left: 50%;
+        bottom: 10%;
+        transform: translate(-50%, -50%);
+      }
     </style>
   </head>
   <body>
+    <progress value="0" max="100" class="Loading" id="Loading"></progress>
     <canvas id="unity-canvas" tabindex="-1" class="UnCanvas"></canvas>
     <script src="Build/SolitaireBet.loader.js"></script>
     <script>
@@ -39,6 +48,7 @@
       meta.name = 'viewport';
       meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
       document.getElementsByTagName('head')[0].appendChild(meta);
+      var Loading = document.getElementById("Loading");
 
       resize();
 
@@ -74,9 +84,11 @@
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       }, (progress) => {
+        Loading.value = progress;
         console.log("!!!" + progress + "!!!");
       }).then((unityInstance) => {
         document.getElementById("unity-canvas").style.backgroundImage = "none";
+        Loading.style.display = "none";
         const urlParams = new URLSearchParams(window.location.search);
         var profileId = "";
         var tournamentType = "";
