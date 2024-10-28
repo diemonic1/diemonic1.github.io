@@ -64,6 +64,10 @@
         }
       }
 
+      function UnityProgress(gameInstance, progress) {
+        console.log(progress);
+      }
+
       createUnityInstance(document.querySelector("#unity-canvas"), {
         dataUrl: "Build/SolitaireBet.data",
         frameworkUrl: "Build/SolitaireBet.framework.js",
@@ -73,7 +77,7 @@
         productName: "SolitaireBet",
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-      }).then((unityInstance) => {
+      }, {onProgress: UnityProgress}).then((unityInstance) => {
         document.getElementById("unity-canvas").style.backgroundImage = "none";
         const urlParams = new URLSearchParams(window.location.search);
         var profileId = "";
