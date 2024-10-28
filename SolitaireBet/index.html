@@ -25,7 +25,7 @@
         top: 50%; 
         transform: translate(-50%, -50%);
       }
-      .Loading {
+      .LoadingDiv {
         z-index: 1000;
         display: block;
         position: absolute;
@@ -33,10 +33,39 @@
         bottom: 10%;
         transform: translate(-50%, -50%);
       }
+      progress {
+        display: block;
+        margin: 1rem auto;
+        padding: 0px;
+        border: 0 none;
+        background-image: url("progress_back.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 14px;
+        width: 200px;
+        height: 30px;
+      }
+      progress::-webkit-progress-bar {
+        background-color: rgba(0, 0, 0, 0);
+      }
+      progress::-webkit-progress-value {
+        background-image: url("progress_bar.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 14px;
+      }
+      progress::-moz-progress-bar {
+        background-color: rgb(160, 115, 32);
+      }
     </style>
   </head>
   <body>
-    <progress value="0" max="1" class="Loading" id="Loading"></progress>
+    <div class="LoadingDiv">
+      <progress value="0" max="1" class="Loading" id="Loading"></progress>
+    </div>
+    
     <canvas id="unity-canvas" tabindex="-1" class="UnCanvas"></canvas>
     <script src="Build/SolitaireBet.loader.js"></script>
     <script>
@@ -85,7 +114,6 @@
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       }, (progress) => {
         Loading.value = progress;
-        console.log("!!!" + progress + "!!!");
       }).then((unityInstance) => {
         document.getElementById("unity-canvas").style.backgroundImage = "none";
         Loading.style.display = "none";
