@@ -67,7 +67,7 @@
   </head>
   <body>
     <div class="LoadingDiv">
-      <progress value="0" max="1" class="Loading" id="Loading"></progress>
+      <progress value="0.15" max="1" class="Loading" id="Loading"></progress>
     </div>
     
     <canvas id="unity-canvas" tabindex="-1" class="UnCanvas"></canvas>
@@ -117,7 +117,8 @@
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       }, (progress) => {
-        Loading.value = progress;
+        if (progress > 0.15)
+          Loading.value = progress;
       }).then((unityInstance) => {
         document.getElementById("unity-canvas").style.backgroundImage = "none";
         Loading.style.display = "none";
