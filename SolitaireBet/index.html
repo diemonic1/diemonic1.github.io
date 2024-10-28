@@ -50,8 +50,9 @@
         var height = window.innerHeight;
         var width = window.innerWidth;
         var c = height / width;
+        var aspectRatio = 2.14;
 
-        if (c < 2.14)
+        if (c < aspectRatio)
         {
           canvas.style.height = "100%";
           canvas.style.width = "100%";
@@ -59,7 +60,7 @@
         else
         {
           canvas.style.width = width + "px";
-          canvas.style.height = width * 16 / 7 + "px";
+          canvas.style.height = width * aspectRatio + "px";
         }
       }
 
