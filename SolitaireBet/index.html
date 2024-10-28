@@ -32,6 +32,10 @@
         left: 50%;
         bottom: 10%;
         transform: translate(-50%, -50%);
+        background-image: url("progress_bar.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
       }
       progress {
         display: block;
@@ -51,7 +55,7 @@
       }
       progress::-webkit-progress-value {
         background-image: url("progress_bar.png");
-        background-size: cover;
+        background-size:auto;
         background-repeat: no-repeat;
         background-position: center;
         border-radius: 14px;
