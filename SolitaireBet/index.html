@@ -82,6 +82,17 @@
       meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
       document.getElementsByTagName('head')[0].appendChild(meta);
       var Loading = document.getElementById("Loading");
+      var loadingNow = true;
+
+      let timerId = setInterval(() => {
+        console.log("Loading");
+        if (loadingNow == false){
+          clearInterval(timerId);
+        }
+        else if (Loading.value < 0.5){
+          Loading.value += 0.002;
+        }
+      }, 10);
 
       resize();
 
@@ -119,6 +130,7 @@
       }).then((unityInstance) => {
         document.getElementById("unity-canvas").style.backgroundImage = "none";
         Loading.style.display = "none";
+        loadingNow = false;
         const urlParams = new URLSearchParams(window.location.search);
         var profileId = "";
         var tournamentType = "";
